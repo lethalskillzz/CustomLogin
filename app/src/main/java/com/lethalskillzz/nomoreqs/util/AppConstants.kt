@@ -7,6 +7,6 @@ package com.lethalskillzz.nomoreqs.util
 object AppConstants {
 
     //val DB_NAME = "nomoreqs.db"
-    //val PREFS_FILE_NAME = "nomoreqs"
+    val PREFS_FILE_NAME = "nomoreqs"
 
 }// This utility class is not publicly instantiable
