@@ -1,60 +1,122 @@
-package io.armcha.ribble.presentation.base_mvp.base
+package com.lethalskillzz.nomoreqs.presentation.base
 
+import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
+import android.support.annotation.StringRes
 import android.support.v4.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import io.armcha.arch.BaseMVPFragment
-import io.armcha.ribble.di.component.ActivityComponent
-import io.armcha.ribble.presentation.navigation.Navigator
-import io.armcha.ribble.presentation.utils.extensions.emptyString
-import kotlinx.android.extensions.CacheImplementation
-import kotlinx.android.extensions.ContainerOptions
-import javax.inject.Inject
+import butterknife.Unbinder
+import com.lethalskillzz.nomoreqs.di.component.ActivityComponent
+import io.armcha.ribble.presentation.base_mvp.base.BaseActivity
 
 /**
- * Created by Chatikyan on 01.08.2017.
+ * Created by ibrahimabdulkadir on 15/11/2017.
  */
-abstract class BaseFragment<V : BaseContract.View, P : BaseContract.Presenter<V>> : BaseMVPFragment<V, P>() {
 
-    @Inject
-    lateinit var navigator: Navigator
+/**
+ * Created by ibrahimabdulkadir on 04/08/2017.
+ */
 
-    protected lateinit var activityComponent: ActivityComponent
-    protected lateinit var activity: BaseActivity<*, *>
+abstract class BaseFragment: Fragment(), MvpView {
+
+    var baseActivity:BaseActivity? = null
+        private set
+    private var mUnBinder:Unbinder? = null
+    private val mProgressDialog: ProgressDialog? = null
+
+    override val isNetworkConnected:Boolean
+        get() = if (baseActivity != null) {
+            baseActivity!!.isNetworkConnected
+        } else false
+
+
+    val activityComponent: ActivityComponent?
+        get() {
+            return if (baseActivity != null) {
+                baseActivity!!.getActivityComponent()
+            } else null
+        }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(false)
+    }
+
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setUp(view)
+    }
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        if (context is BaseActivity<*, *>) {
-            this.activity = context
-            activityComponent = activity.activityComponent
-            injectDependencies()
+        if (context is BaseActivity)
+        {
+            val activity = context as BaseActivity?
+            this.baseActivity = activity
+            activity!!.onFragmentAttached()
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(layoutResId, container, false)
+    override fun showLoading() {
+        hideLoading()
     }
 
-    inline fun <reified T : Fragment> goTo(keepState: Boolean = true,
-                                           withCustomAnimation: Boolean = false,
-                                           arg: Bundle = Bundle.EMPTY) {
-        navigator.goTo<T>(keepState = keepState, withCustomAnimation = withCustomAnimation, arg = arg)
+    override fun hideLoading() {
+
     }
 
-    protected abstract fun injectDependencies()
-
-    protected abstract val layoutResId: Int
-
-    open fun getTitle(): String = emptyString
-
-    fun showDialog(title: String, message: String, buttonText: String = "Close") {
-        activity.showDialog(title, message, buttonText)
+    override fun onError(message:String) {
+        if (baseActivity != null)
+        {
+            baseActivity!!.onError(message)
+        }
     }
 
-    fun showErrorDialog(message: String?, buttonText: String = "Close") {
-        activity.showDialog(getString(io.armcha.ribble.R.string.error_title), message ?: emptyString, buttonText)
+    override fun onError(@StringRes resId:Int) {
+        if (baseActivity != null)
+        {
+            baseActivity!!.onError(resId)
+        }
+    }
+
+    override fun showMessage(message:String) {
+        if (baseActivity != null)
+        {
+            baseActivity!!.showMessage(message)
+        }
+    }
+
+    override fun showMessage(@StringRes resId:Int) {
+        if (baseActivity != null)
+        {
+            baseActivity!!.showMessage(resId)
+        }
+    }
+
+    override fun onDetach() {
+        baseActivity = null
+        super.onDetach()
+    }
+
+    fun setUnBinder(unBinder: Unbinder) {
+        mUnBinder = unBinder
+    }
+
+    protected abstract fun setUp(view: View?)
+
+    override fun onDestroy() {
+        if (mUnBinder != null)
+        {
+            mUnBinder!!.unbind()
+        }
+        super.onDestroy()
+    }
+
+    interface Callback {
+
+        fun onFragmentAttached()
+
+        fun onFragmentDetached(tag:String)
     }
 }

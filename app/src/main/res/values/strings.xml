@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">NoMoreQs</string>
+
+    <string name="splash_text">www.mytaxi.com</string>
+
+
+    <!--App Message-->
+    <string name="error_no_internet">Couldn\'t connect. Please check your Internet connection!</string>
+    <string name="error_api_retry">Please retry!</string>
+    <string name="error_default">Something wrong happened!</string>
+
 </resources>

@@ -14,7 +14,8 @@ buildscript {
     ext.rxandroid2_version = '2.0.1'
     ext.stetho_version = '1.5.0'
     ext.timber_version = '4.6.0'
-    ext.logging_interceptor_version = '3.6.0'
+    ext.logginginterceptor_version = '3.6.0'
+    ext.butterknife_version = '8.8.1'
 
 
     repositories {
