@@ -16,7 +16,7 @@ import javax.inject.Inject
  * onAttach() and onDetach(). It also handles keeping a reference to the mvpView that
  * can be accessed from the children classes by calling getMvpView().
  */
-class BasePresenter<V : MvpView> @Inject
+open class BasePresenter<V : MvpView> @Inject
 constructor(val appRepository: AppRepository,
             val compositeDisposable: CompositeDisposable) : MvpPresenter<V> {
 

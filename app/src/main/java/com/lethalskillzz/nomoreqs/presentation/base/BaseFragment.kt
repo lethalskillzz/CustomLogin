@@ -10,9 +10,6 @@ import butterknife.Unbinder
 import com.lethalskillzz.nomoreqs.di.component.ActivityComponent
 import io.armcha.ribble.presentation.base_mvp.base.BaseActivity
 
-/**
- * Created by ibrahimabdulkadir on 15/11/2017.
- */
 
 /**
  * Created by ibrahimabdulkadir on 04/08/2017.

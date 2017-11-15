@@ -2,6 +2,7 @@ package com.lethalskillzz.nomoreqs.di.component
 
 import com.lethalskillzz.nomoreqs.di.PerActivity
 import com.lethalskillzz.nomoreqs.di.module.ActivityModule
+import com.lethalskillzz.nomoreqs.presentation.splash.SplashActivity
 import dagger.Component
 
 /**
@@ -12,5 +13,5 @@ import dagger.Component
 @Component(dependencies = arrayOf(ApplicationComponent::class), modules = arrayOf(ActivityModule::class))
 interface ActivityComponent {
 
-
+    fun inject(activity: SplashActivity)
 }

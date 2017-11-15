@@ -24,39 +24,28 @@ class ApplicationModule(private val mApplication: Application) {
 
     @Provides
     @ApplicationContext
-    internal fun provideContext(): Context {
-        return mApplication
-    }
+    internal fun provideContext(): Context = mApplication
 
     @Provides
-    internal fun provideApplication(): Application {
-        return mApplication
-    }
+    internal fun provideApplication(): Application = mApplication
 
     @Singleton
     @Provides
     @Local
-    internal fun provideAppLocalDataSource(): AppDataSource {
-        return AppLocalDataSource()
-    }
+    internal fun provideAppLocalDataSource(): AppDataSource = AppLocalDataSource()
 
     @Singleton
     @Provides
     @Remote
-    internal fun provideAppRemoteDataSource(): AppDataSource {
-        return AppRemoteDataSource()
-    }
+    internal fun provideAppRemoteDataSource(): AppDataSource = AppRemoteDataSource()
 
 
     @Provides
-    internal fun provideScheduler(): Scheduler {
-        return Schedulers.io()
-    }
+    internal fun provideScheduler(): Scheduler = Schedulers.io()
 
     @Singleton
     @Provides
-    internal fun providePreferencesHelper(@ApplicationContext context: Context): PreferencesHelper {
-        return PreferencesHelper(context)
-    }
+    internal fun providePreferencesHelper(@ApplicationContext context: Context): PreferencesHelper =
+            PreferencesHelper(context)
 }
 
