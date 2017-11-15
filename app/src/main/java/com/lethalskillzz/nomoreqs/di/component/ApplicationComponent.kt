@@ -3,6 +3,7 @@ package com.lethalskillzz.nomoreqs.di.component
 import android.app.Application
 import android.content.Context
 import com.lethalskillzz.nomoreqs.App
+import com.lethalskillzz.nomoreqs.data.AppRepository
 import com.lethalskillzz.nomoreqs.di.ApplicationContext
 import com.lethalskillzz.nomoreqs.di.module.ApplicationModule
 import dagger.Component

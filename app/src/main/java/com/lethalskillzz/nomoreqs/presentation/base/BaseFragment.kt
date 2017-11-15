@@ -34,7 +34,7 @@ abstract class BaseFragment: Fragment(), MvpView {
     val activityComponent: ActivityComponent?
         get() {
             return if (baseActivity != null) {
-                baseActivity!!.getActivityComponent()
+                baseActivity!!.activityComponent
             } else null
         }
 

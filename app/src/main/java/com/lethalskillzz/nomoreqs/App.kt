@@ -1,10 +1,10 @@
 package com.lethalskillzz.nomoreqs
 
 import android.app.Application
-import android.content.Context
 import com.facebook.stetho.Stetho
 import com.lethalskillzz.nomoreqs.data.AppRepository
 import com.lethalskillzz.nomoreqs.di.component.ApplicationComponent
+import com.lethalskillzz.nomoreqs.di.component.DaggerApplicationComponent
 import com.lethalskillzz.nomoreqs.di.module.ApplicationModule
 import com.lethalskillzz.nomoreqs.util.AppLogger
 import javax.inject.Inject

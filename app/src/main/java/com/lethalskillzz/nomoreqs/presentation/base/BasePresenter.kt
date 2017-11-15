@@ -1,6 +1,7 @@
 package com.lethalskillzz.nomoreqs.presentation.base
 
 import com.lethalskillzz.nomoreqs.R
+import com.lethalskillzz.nomoreqs.data.AppRepository
 import io.reactivex.disposables.CompositeDisposable
 import retrofit2.HttpException
 import javax.inject.Inject

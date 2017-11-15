@@ -1,7 +1,6 @@
 package io.armcha.ribble.presentation.base_mvp.base
 
 import android.annotation.TargetApi
-import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -15,6 +14,7 @@ import butterknife.Unbinder
 import com.lethalskillzz.nomoreqs.App
 import com.lethalskillzz.nomoreqs.R
 import com.lethalskillzz.nomoreqs.di.component.ActivityComponent
+import com.lethalskillzz.nomoreqs.di.component.DaggerActivityComponent
 import com.lethalskillzz.nomoreqs.di.module.ActivityModule
 import com.lethalskillzz.nomoreqs.presentation.base.BaseFragment
 import com.lethalskillzz.nomoreqs.presentation.base.MvpView
@@ -38,7 +38,7 @@ abstract class BaseActivity : AppCompatActivity(), MvpView, BaseFragment.Callbac
         super.onCreate(savedInstanceState)
         activityComponent = DaggerActivityComponent.builder()
                 .activityModule(ActivityModule(this))
-                .applicationComponent((application as App).getComponent())
+                .applicationComponent((application as App).component)
                 .build()
     }
 
