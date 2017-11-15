@@ -55,10 +55,12 @@ dependencies {
     compile "com.squareup.retrofit2:retrofit:$retrofit_version"
     compile "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
     compile "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
+    compile "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
 
     // Timber
-    compile 'com.jakewharton.timber:timber:4.6.0'
+    compile "com.jakewharton.timber:timber:$timber_version"
+
+    compile "com.facebook.stetho:stetho:$stetho_version"
 
 
     testImplementation 'junit:junit:4.12'
