@@ -15,7 +15,7 @@ buildscript {
     ext.stetho_version = '1.5.0'
     ext.timber_version = '4.6.0'
     ext.logginginterceptor_version = '3.6.0'
-    ext.butterknife_version = '8.8.1'
+    ext.butterknife_version = '8.8.0'
 
 
     repositories {
@@ -27,6 +27,7 @@ buildscript {
         classpath "com.android.tools.build:gradle:$gradle_version"
         classpath 'com.google.gms:google-services:3.1.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.jakewharton:butterknife-gradle-plugin:$butterknife_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

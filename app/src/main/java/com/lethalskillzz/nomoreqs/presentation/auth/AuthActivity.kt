@@ -3,7 +3,6 @@ package com.lethalskillzz.nomoreqs.presentation.auth
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import butterknife.ButterKnife
 import com.lethalskillzz.nomoreqs.R
 import com.lethalskillzz.nomoreqs.presentation.base.BaseFragment
 import com.lethalskillzz.nomoreqs.presentation.custom.AnimatedViewPager
@@ -39,7 +38,7 @@ class AuthActivity : BaseActivity(), AuthMvpView {
     }
 
     protected override fun setUp() {
-        val pager = ButterKnife.findById<AnimatedViewPager>(this, R.id.pager)
+        val pager = findViewById<AnimatedViewPager>(R.id.pager)
         pager.adapter = AuthAdapter(supportFragmentManager, pager)
     }
 

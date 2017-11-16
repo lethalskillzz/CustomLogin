@@ -11,10 +11,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import butterknife.BindBool
 import butterknife.BindView
-import butterknife.BindViews
 import butterknife.ButterKnife
+import butterknife.OnClick
 import com.lethalskillzz.nomoreqs.R
 import com.lethalskillzz.nomoreqs.presentation.base.BaseFragment
 import com.lethalskillzz.nomoreqs.presentation.custom.BounceOvershootInterpolator
@@ -28,27 +27,27 @@ class LoginFragment : BaseFragment(), LoginMvpView {
 
     @Inject lateinit var mPresenter: LoginMvpPresenter<LoginMvpView>
 
-    @BindBool(R.bool.master_detail_mode)
-    internal var masterDetailMode: Boolean = false
+//    @BindBool(R.bool.master_detail_mode)
+//     var masterDetailMode: Boolean = false
 
 
-    @BindViews(value = *intArrayOf(R.id.email_input_edit, R.id.password_input_edit))
-    protected var views: List<View>? = null
+//    @BindViews(value = *intArrayOf(R.id.email_input_edit, R.id.password_input_edit))
+//    lateinit var views: List<View>
 
-    //@BindView(R.id.controller)
-    protected var controller: TextView? = null
+    @BindView(R.id.controller)
+    lateinit var controller: TextView
 
     @BindView(R.id.parent)
-    protected var parent: ViewGroup? = null
+    lateinit var parent: ViewGroup
 
     @BindView(R.id.first)
-    protected var first: View? = null
+    lateinit var first: View
 
     @BindView(R.id.second)
-    protected var second: View? = null
+    lateinit var second: View
 
     @BindView(R.id.last)
-    protected var last: View? = null
+    lateinit var last: View
 
 
     fun newInstance(): LoginFragment {
@@ -77,22 +76,19 @@ class LoginFragment : BaseFragment(), LoginMvpView {
 
         }
 
-        if (controller != null) {
-            controller!!.text = mergeColoredText(getString(R.string.or), getString(R.string.log_in_or_label),
-                    ContextCompat.getColor(context, R.color.white_trans),
-                    ContextCompat.getColor(context, R.color.color_text))
-        }
-
         return view
     }
 
     override fun setUp(view: View?) {
 
+        controller!!.text = mergeColoredText(getString(R.string.or), getString(R.string.log_in_or_label),
+                ContextCompat.getColor(context, R.color.white_trans),
+                ContextCompat.getColor(context, R.color.color_text))
     }
 
 
     override fun cleaFocus() {
-        views!!.forEach { view -> view.clearFocus() }
+        //views!!.forEach { view -> view.clearFocus() }
     }
 
     override fun fireAnimation() {
@@ -127,6 +123,13 @@ class LoginFragment : BaseFragment(), LoginMvpView {
         return builder.append(leftPartSpannable).append("  ").append(rightPartSpannable)
     }
 
+
+    @OnClick(R.id.controller)
+    fun makeTransition() {
+        if (callback != null) {
+            callback!!.remove(this)
+        }
+    }
 
 }
 
