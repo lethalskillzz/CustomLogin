@@ -1,11 +1,12 @@
-package com.lethalskillzz.nomoreqs.presentation.splash
+package com.lethalskillzz.nomoreqs.presentation.auth
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import butterknife.ButterKnife
 import com.lethalskillzz.nomoreqs.R
-import com.lethalskillzz.nomoreqs.presentation.auth.AuthActivity
+import com.lethalskillzz.nomoreqs.presentation.custom.AnimatedViewPager
+import com.lethalskillzz.nomoreqs.presentation.custom.AuthAdapter
 import io.armcha.ribble.presentation.base_mvp.base.BaseActivity
 import javax.inject.Inject
 
@@ -13,26 +14,22 @@ import javax.inject.Inject
  * Created by ibrahimabdulkadir on 15/11/2017.
  */
 
+class AuthActivity : BaseActivity(), AuthMvpView {
 
-class SplashActivity : BaseActivity(), SplashMvpView {
-
-    @Inject lateinit var mPresenter: SplashMvpPresenter<SplashMvpView>
+    @Inject lateinit var mPresenter: AuthMvpPresenter<AuthMvpView>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        setContentView(R.layout.activity_auth)
 
         activityComponent!!.inject(this)
 
-        setUnBinder(ButterKnife.bind(this))
+        //setUnBinder(ButterKnife.bind(this))
 
-        mPresenter!!.onAttach(this@SplashActivity)
-    }
+        mPresenter!!.onAttach(this@AuthActivity)
 
+        setUp()
 
-    override fun openNextActivity() {
-        startActivity(AuthActivity.getStartIntent(this@SplashActivity))
-        finish()
     }
 
 
@@ -42,13 +39,14 @@ class SplashActivity : BaseActivity(), SplashMvpView {
     }
 
     protected override fun setUp() {
-
+        val pager = ButterKnife.findById<AnimatedViewPager>(this, R.id.pager)
+        pager.adapter = AuthAdapter(supportFragmentManager, pager)
     }
 
     companion object {
 
         fun getStartIntent(context: Context): Intent {
-            return Intent(context, SplashActivity::class.java)
+            return Intent(context, AuthActivity::class.java)
         }
     }
 }

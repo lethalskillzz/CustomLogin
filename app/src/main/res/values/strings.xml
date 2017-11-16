@@ -4,6 +4,19 @@
     <string name="splash_text">www.mytaxi.com</string>
 
 
+    <string name="sign_up_label">Sign Up</string>
+    <string name="log_in_label">Log In</string>
+
+    <string name="sign_up_or_label"> Sign Up </string>
+    <string name="log_in_or_label"> Log In </string>
+
+    <string name="password_hint">Password</string>
+    <string name="email_hint">Email</string>
+    <string name="confirm_hint">Confirm Password</string>
+
+    <string name="or"> Or </string>
+
+
     <!--App Message-->
     <string name="error_no_internet">Couldn\'t connect. Please check your Internet connection!</string>
     <string name="error_api_retry">Please retry!</string>
