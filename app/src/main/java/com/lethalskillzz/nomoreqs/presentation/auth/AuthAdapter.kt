@@ -1,12 +1,23 @@
 package com.lethalskillzz.nomoreqs.presentation.auth
 
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentStatePagerAdapter
+import com.lethalskillzz.nomoreqs.presentation.auth.login.LoginFragment
+import com.lethalskillzz.nomoreqs.presentation.auth.signup.SignupFragment
+import com.lethalskillzz.nomoreqs.presentation.base.BaseFragment
+import com.lethalskillzz.nomoreqs.presentation.custom.AnimatedViewPager
+import com.lethalskillzz.nomoreqs.presentation.custom.FlipTransformer
+
 /**
  * Created by ibrahimabdulkadir on 16/11/2017.
  */
 
-class AuthAdapter(manager: FragmentManager, private val pager: AnimatedViewPager) : FragmentStatePagerAdapter(manager), AuthFragment.Callback {
-    private var signUp: AuthFragment? = null
-    private var logIn: AuthFragment? = null
+class AuthAdapter(manager: FragmentManager, private val pager: AnimatedViewPager) :
+        FragmentStatePagerAdapter(manager), BaseFragment.AuthCallback {
+
+
+    private var signUp: BaseFragment? = null
+    private var logIn: BaseFragment? = null
 
     private val transformer: FlipTransformer
 
@@ -16,19 +27,19 @@ class AuthAdapter(manager: FragmentManager, private val pager: AnimatedViewPager
         this.pager.setPageTransformer(true, transformer)
     }
 
-    override fun getItem(position: Int): AuthFragment {
+    override fun getItem(position: Int): BaseFragment {
         if (position == 0) {
-            if (logIn == null) logIn = LogInFragment()
-            logIn!!.setCallback(this)
-            return logIn
+            if (logIn == null) logIn = LoginFragment()
+            logIn!!.setAuthCallback(this)
+            return logIn as BaseFragment
         } else if (signUp == null) {
-            signUp = SignUpFragment()
-            signUp!!.setCallback(this)
+            signUp = SignupFragment()
+            signUp!!.setAuthCallback(this)
         }
-        return signUp
+        return signUp as BaseFragment
     }
 
-    override fun remove(fragment: AuthFragment) {
+    override fun remove(fragment: BaseFragment) {
         if (logIn === fragment) {
             transformer.setMovingForward(true)
             pager.setCurrentItem(1, true)

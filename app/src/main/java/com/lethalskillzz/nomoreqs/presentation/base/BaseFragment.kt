@@ -115,5 +115,26 @@ abstract class BaseFragment: Fragment(), MvpView {
         fun onFragmentAttached()
 
         fun onFragmentDetached(tag:String)
+
+        fun remove(fragment: BaseFragment)
     }
+
+
+
+
+    public var callback: AuthCallback? = null
+
+    public fun setAuthCallback(callback: AuthCallback) {
+        this.callback = callback
+    }
+
+    abstract fun fireAnimation()
+    abstract fun cleaFocus()
+
+
+    interface AuthCallback {
+        fun remove(fragment: BaseFragment)
+    }
+
+
 }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import butterknife.ButterKnife
 import com.lethalskillzz.nomoreqs.R
 import com.lethalskillzz.nomoreqs.presentation.auth.AuthActivity
+import com.lethalskillzz.nomoreqs.presentation.base.BaseFragment
 import io.armcha.ribble.presentation.base_mvp.base.BaseActivity
 import javax.inject.Inject
 
@@ -51,4 +52,9 @@ class SplashActivity : BaseActivity(), SplashMvpView {
             return Intent(context, SplashActivity::class.java)
         }
     }
+
+    override fun remove(fragment: BaseFragment) {
+
+    }
+
 }

@@ -5,8 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import butterknife.ButterKnife
 import com.lethalskillzz.nomoreqs.R
+import com.lethalskillzz.nomoreqs.presentation.base.BaseFragment
 import com.lethalskillzz.nomoreqs.presentation.custom.AnimatedViewPager
-import com.lethalskillzz.nomoreqs.presentation.custom.AuthAdapter
 import io.armcha.ribble.presentation.base_mvp.base.BaseActivity
 import javax.inject.Inject
 
@@ -48,5 +48,8 @@ class AuthActivity : BaseActivity(), AuthMvpView {
         fun getStartIntent(context: Context): Intent {
             return Intent(context, AuthActivity::class.java)
         }
+    }
+
+    override fun remove(fragment: BaseFragment) {
     }
 }
