@@ -6,20 +6,23 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/caption"
+
+    <Button
+        android:id="@+id/button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="15dp"
         android:gravity="center"
-        android:textSize="60sp"
         android:textAllCaps="true"
-        android:textStyle="bold"
-        android:textColor="#fafafa"
         android:text="@string/log_in_label"
+        android:textSize="18sp"
+        android:background="@drawable/secondary_button"
+        android:elevation="2dp"
+        android:textColor="@android:color/white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8"
+        app:layout_constraintVertical_bias="0.63"
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
@@ -43,7 +46,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <ImageView
-        android:src="@drawable/log"
+        android:src="@drawable/facebook"
         android:layout_width="@dimen/option_size"
         android:layout_height="@dimen/option_size"
         android:id="@+id/first"
@@ -59,7 +62,7 @@
         app:layout_constraintTop_toTopOf="@+id/controller" />
 
     <ImageView
-        android:src="@drawable/log"
+        android:src="@drawable/google_plus"
         android:layout_width="@dimen/option_size"
         android:layout_height="@dimen/option_size"
         android:id="@+id/second"
@@ -80,7 +83,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/second"
         app:layout_constraintTop_toTopOf="@+id/second"
         app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintRight_toLeftOf="@+id/controller" />
+        app:layout_constraintRight_toLeftOf="@+id/controller"
+        android:visibility="gone"/>
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
@@ -105,7 +109,7 @@
     <android.support.design.widget.TextInputLayout
         style="@style/Widget.TextInputLayout"
         android:id="@+id/email_input"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintTop_toBottomOf="@+id/focus_hider"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
@@ -117,10 +121,11 @@
             android:inputType="textEmailAddress" />
     </android.support.design.widget.TextInputLayout>
 
+
     <android.support.design.widget.TextInputLayout
         style="@style/Widget.TextInputLayout"
         android:id="@+id/password_input"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@+id/email_input"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
@@ -132,16 +137,17 @@
             android:inputType="textEmailAddress" />
     </android.support.design.widget.TextInputLayout>
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFF"
         android:gravity="center"
         android:textStyle="bold"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:text="Forgot Password?"
-        app:layout_constraintTop_toBottomOf="@+id/password_input"
-        android:layout_marginTop="48dp"
+        app:layout_constraintTop_toBottomOf="@+id/button_login"
+        android:layout_marginTop="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 

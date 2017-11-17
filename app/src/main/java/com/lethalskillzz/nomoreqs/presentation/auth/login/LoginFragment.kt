@@ -81,7 +81,7 @@ class LoginFragment : BaseFragment(), LoginMvpView {
 
     override fun setUp(view: View?) {
 
-        controller!!.text = mergeColoredText(getString(R.string.or), getString(R.string.log_in_or_label),
+        controller!!.text = mergeColoredText(getString(R.string.or), getString(R.string.sign_up_or_label),
                 ContextCompat.getColor(context, R.color.white_trans),
                 ContextCompat.getColor(context, R.color.color_text))
     }
