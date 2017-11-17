@@ -1,4 +1,4 @@
-package com.lethalskillzz.nomoreqs.presentation.custom;
+package com.lethalskillzz.nomoreqs.presentation.custom.flip;
 
 
 import android.support.v4.view.ViewPager;

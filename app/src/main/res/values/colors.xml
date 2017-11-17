@@ -3,6 +3,8 @@
     <color name="colorPrimary">#FF4081</color>
     <color name="colorPrimaryDark">#eff10783</color>
 
+    <color name="overlayPrimary">#D9FF4081</color>
+
     <color name="colorSecondary">#3F51B5</color>
     <color name="colorSecondaryDark">#303F9F</color>
 

@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment
 import android.view.View
 import butterknife.Unbinder
 import com.lethalskillzz.nomoreqs.di.component.ActivityComponent
-import io.armcha.ribble.presentation.base_mvp.base.BaseActivity
 
 
 /**
@@ -17,7 +16,7 @@ import io.armcha.ribble.presentation.base_mvp.base.BaseActivity
 
 abstract class BaseFragment: Fragment(), MvpView {
 
-    var baseActivity:BaseActivity? = null
+    var baseActivity: BaseActivity? = null
         private set
     private var mUnBinder:Unbinder? = null
     private val mProgressDialog: ProgressDialog? = null

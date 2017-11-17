@@ -1,4 +1,4 @@
-package io.armcha.ribble.presentation.base_mvp.base
+package com.lethalskillzz.nomoreqs.presentation.base
 
 import android.annotation.TargetApi
 import android.content.pm.PackageManager
@@ -16,8 +16,6 @@ import com.lethalskillzz.nomoreqs.R
 import com.lethalskillzz.nomoreqs.di.component.ActivityComponent
 import com.lethalskillzz.nomoreqs.di.component.DaggerActivityComponent
 import com.lethalskillzz.nomoreqs.di.module.ActivityModule
-import com.lethalskillzz.nomoreqs.presentation.base.BaseFragment
-import com.lethalskillzz.nomoreqs.presentation.base.MvpView
 import com.lethalskillzz.nomoreqs.util.NetworkUtils
 
 /**

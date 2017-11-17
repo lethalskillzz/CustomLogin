@@ -5,8 +5,8 @@ import android.support.v4.app.FragmentStatePagerAdapter
 import com.lethalskillzz.nomoreqs.presentation.auth.login.LoginFragment
 import com.lethalskillzz.nomoreqs.presentation.auth.signup.SignupFragment
 import com.lethalskillzz.nomoreqs.presentation.base.BaseFragment
-import com.lethalskillzz.nomoreqs.presentation.custom.AnimatedViewPager
-import com.lethalskillzz.nomoreqs.presentation.custom.FlipTransformer
+import com.lethalskillzz.nomoreqs.presentation.custom.flip.AnimatedViewPager
+import com.lethalskillzz.nomoreqs.presentation.custom.flip.FlipTransformer
 
 /**
  * Created by ibrahimabdulkadir on 16/11/2017.

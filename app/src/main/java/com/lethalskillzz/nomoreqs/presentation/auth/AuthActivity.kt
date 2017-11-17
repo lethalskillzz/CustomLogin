@@ -5,8 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import com.lethalskillzz.nomoreqs.R
 import com.lethalskillzz.nomoreqs.presentation.base.BaseFragment
-import com.lethalskillzz.nomoreqs.presentation.custom.AnimatedViewPager
-import io.armcha.ribble.presentation.base_mvp.base.BaseActivity
+import com.lethalskillzz.nomoreqs.presentation.custom.flip.AnimatedViewPager
+import com.lethalskillzz.nomoreqs.presentation.base.BaseActivity
 import javax.inject.Inject
 
 /**

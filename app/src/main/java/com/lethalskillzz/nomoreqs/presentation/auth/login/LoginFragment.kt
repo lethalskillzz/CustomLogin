@@ -16,7 +16,7 @@ import butterknife.ButterKnife
 import butterknife.OnClick
 import com.lethalskillzz.nomoreqs.R
 import com.lethalskillzz.nomoreqs.presentation.base.BaseFragment
-import com.lethalskillzz.nomoreqs.presentation.custom.BounceOvershootInterpolator
+import com.lethalskillzz.nomoreqs.presentation.custom.flip.BounceOvershootInterpolator
 import javax.inject.Inject
 
 /**
