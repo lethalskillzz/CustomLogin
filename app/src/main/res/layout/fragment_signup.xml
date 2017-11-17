@@ -135,7 +135,7 @@
             style="@style/Widget.TextEdit"
             android:id="@+id/password_input_edit"
             android:hint="@string/password_hint"
-            android:inputType="textEmailAddress" />
+            android:inputType="textPassword" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -150,7 +150,7 @@
             style="@style/Widget.TextEdit"
             android:id="@+id/confirm_password_input_edit"
             android:hint="@string/confirm_hint"
-            android:inputType="textEmailAddress" />
+            android:inputType="textPassword" />
     </android.support.design.widget.TextInputLayout>
 
 </android.support.constraint.ConstraintLayout>

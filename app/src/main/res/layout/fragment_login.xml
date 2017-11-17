@@ -134,7 +134,7 @@
             android:id="@+id/password_input_edit"
             style="@style/Widget.TextEdit"
             android:hint="@string/password_hint"
-            android:inputType="textEmailAddress" />
+            android:inputType="textPassword" />
     </android.support.design.widget.TextInputLayout>
 
 

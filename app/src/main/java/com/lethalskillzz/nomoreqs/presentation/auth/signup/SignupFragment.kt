@@ -4,6 +4,7 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import android.support.v4.view.ViewCompat
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
@@ -17,6 +18,7 @@ import butterknife.OnClick
 import com.lethalskillzz.nomoreqs.R
 import com.lethalskillzz.nomoreqs.presentation.base.BaseFragment
 import com.lethalskillzz.nomoreqs.presentation.custom.flip.BounceOvershootInterpolator
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import javax.inject.Inject
 
 /**
@@ -49,6 +51,9 @@ class SignupFragment : BaseFragment(), SignupMvpView {
     @BindView(R.id.last)
     lateinit var last: View
 
+    @BindView(R.id.focus_hider)
+    lateinit var logo: View
+
 
     fun newInstance(): SignupFragment {
         val args = Bundle()
@@ -58,9 +63,18 @@ class SignupFragment : BaseFragment(), SignupMvpView {
         return fragment
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        KeyboardVisibilityEvent.setEventListener(activity) { isOpen ->
+            val scale = if (isOpen) 0.75f else 1f
+            ViewCompat.animate(logo)
+                    .scaleX(scale)
+                    .scaleY(scale)
+                    .setDuration(300)
+                    .start()
+            if (!isOpen) cleaFocus()
+        }
     }
 
 

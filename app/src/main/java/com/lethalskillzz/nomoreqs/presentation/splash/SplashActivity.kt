@@ -2,10 +2,12 @@ package com.lethalskillzz.nomoreqs.presentation.splash
 
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.widget.AppCompatTextView
 import android.view.View
+import android.view.WindowManager
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.ImageView
 import android.widget.RelativeLayout
@@ -49,6 +51,9 @@ class SplashActivity : BaseActivity(), SplashMvpView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+        window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
 
         activityComponent!!.inject(this)
 
