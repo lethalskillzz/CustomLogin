@@ -8,13 +8,15 @@ import android.support.v4.view.ViewCompat
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
-import butterknife.OnClick
+import butterknife.OnTouch
 import com.lethalskillzz.nomoreqs.R
 import com.lethalskillzz.nomoreqs.presentation.base.BaseFragment
 import com.lethalskillzz.nomoreqs.presentation.custom.flip.BounceOvershootInterpolator
@@ -94,6 +96,7 @@ class SignupFragment : BaseFragment(), SignupMvpView {
     }
 
     override fun setUp(view: View?) {
+
         controller!!.text = mergeColoredText(getString(R.string.or), getString(R.string.log_in_or_label),
                 ContextCompat.getColor(context, R.color.white_trans),
                 ContextCompat.getColor(context, R.color.color_text))
@@ -137,11 +140,60 @@ class SignupFragment : BaseFragment(), SignupMvpView {
         return builder.append(leftPartSpannable).append("  ").append(rightPartSpannable)
     }
 
-    @OnClick(R.id.controller)
-    fun makeTransition() {
-        if (callback != null) {
-            callback!!.remove(this)
+    //    @OnClick(R.id.controller)
+//    fun makeTransition() {
+//        if (callback != null) {
+//            callback!!.remove(this)
+//        }
+//    }
+
+    var x1 = 0f
+    var x2 = 0f
+    var MIN_DISTANCE = 150
+
+    @OnTouch(R.id.controller)
+    fun buttonsTouched(v: View, event: MotionEvent): Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                Log.e("controller", "down")
+                x1 = event.x
+                if (callback != null) {
+                    callback!!.remove(this)
+                }
+            }
+            MotionEvent.ACTION_UP -> {
+                Log.e("controller", "up")
+                x2 = event.x
+                var deltaX: Float = x2 - x1;
+
+                if (Math.abs(deltaX) > MIN_DISTANCE) {
+                    // Left to Right swipe action
+                    if (x2 > x1) {
+                        if (callback != null) {
+                            callback!!.remove(this)
+                        }
+                    }
+                    // Right to left swipe action
+                    else {
+                        if (callback != null) {
+                            callback!!.remove(this)
+                        }
+                    }
+                } else {
+                    // consider as something else - a screen tap for example
+
+                }
+            }
+            MotionEvent.ACTION_MOVE -> {
+                Log.e("controller", "move")
+            }
+            else -> {
+                Log.e("controller", "else")
+            }
+
         }
+
+        return false
     }
 
 }
