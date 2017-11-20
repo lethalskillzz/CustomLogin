@@ -44,17 +44,29 @@ class SignupFragment : BaseFragment(), SignupMvpView {
     @BindView(R.id.parent)
     lateinit var parent: ViewGroup
 
-    @BindView(R.id.first)
-    lateinit var first: View
-
-    @BindView(R.id.second)
-    lateinit var second: View
-
-    @BindView(R.id.last)
-    lateinit var last: View
-
     @BindView(R.id.focus_hider)
     lateinit var logo: View
+
+    @BindView(R.id.button_signup)
+    lateinit var signupButton: View
+
+    @BindView(R.id.email_input_layout)
+    lateinit var emailInputLayout: View
+
+    @BindView(R.id.email_input)
+    lateinit var emailInput: View
+
+    @BindView(R.id.password_input_layout)
+    lateinit var passwordInputLayout: View
+
+    @BindView(R.id.password_input)
+    lateinit var passwordInput: View
+
+    @BindView(R.id.confirm_password_input_layout)
+    lateinit var confirmPasswordInputLayout: View
+
+    @BindView(R.id.confirm_password_input)
+    lateinit var confirmPasswordInput: View
 
 
     fun newInstance(): SignupFragment {
@@ -109,21 +121,12 @@ class SignupFragment : BaseFragment(), SignupMvpView {
     }
 
     override fun fireAnimation() {
-        val offsetX = parent!!.getWidth() - (last!!.getX() + last!!.getWidth()) - resources.getDimension(R.dimen.option_size)
-
-        val firstAnimator = ObjectAnimator.ofFloat (first, View.TRANSLATION_X, 0f)
-        val secondAnimator = ObjectAnimator.ofFloat(second, View.TRANSLATION_X, 0f)
-        val lastAnimator = ObjectAnimator.ofFloat(last, View.TRANSLATION_X, 0f)
 
         val buttonAnimator = ObjectAnimator.ofFloat(controller, View.TRANSLATION_X, controller!!.translationX)
-        first!!.translationX = offsetX
-        second!!.translationX = offsetX
-        last!!.translationX = offsetX
         controller!!.translationX = controller!!.width.toFloat()
 
         buttonAnimator.interpolator = BounceOvershootInterpolator(4f)
         val buttonSet = AnimatorSet()
-        buttonSet.playTogether(firstAnimator, secondAnimator, lastAnimator)
         buttonSet.interpolator = BounceOvershootInterpolator(2f)
         val animatorSet = AnimatorSet()
         animatorSet.startDelay = 500

@@ -15,6 +15,7 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
+import com.google.firebase.auth.FirebaseAuth
 import com.lethalskillzz.nomoreqs.R
 import com.lethalskillzz.nomoreqs.presentation.auth.AuthActivity
 import com.lethalskillzz.nomoreqs.presentation.base.BaseActivity
@@ -222,7 +223,13 @@ class SplashActivity : BaseActivity(), SplashMvpView {
 
     fun animationsFinished() {
 
-        startActivity(AuthActivity.getStartIntent(this@SplashActivity))
+
+        val auth = FirebaseAuth.getInstance()
+        val currentUser = auth.currentUser
+        if(currentUser!=null)
+            startActivity(AuthActivity.getStartIntent(this@SplashActivity))
+        else
+            startActivity(AuthActivity.getStartIntent(this@SplashActivity))
         finish()
 
     }

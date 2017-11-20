@@ -15,6 +15,9 @@ import com.lethalskillzz.nomoreqs.presentation.auth.login.LoginPresenter
 import com.lethalskillzz.nomoreqs.presentation.auth.signup.SignupMvpPresenter
 import com.lethalskillzz.nomoreqs.presentation.auth.signup.SignupMvpView
 import com.lethalskillzz.nomoreqs.presentation.auth.signup.SignupPresenter
+import com.lethalskillzz.nomoreqs.presentation.main.MainMvpPresenter
+import com.lethalskillzz.nomoreqs.presentation.main.MainMvpView
+import com.lethalskillzz.nomoreqs.presentation.main.MainPresenter
 import com.lethalskillzz.nomoreqs.presentation.splash.SplashMvpPresenter
 import com.lethalskillzz.nomoreqs.presentation.splash.SplashMvpView
 import com.lethalskillzz.nomoreqs.presentation.splash.SplashPresenter
@@ -65,6 +68,13 @@ class ActivityModule(private val mActivity: AppCompatActivity) {
     internal fun provideSignupPresenter(
             presenter: SignupPresenter<SignupMvpView>): SignupMvpPresenter<SignupMvpView> =
             presenter
+
+    @Provides
+    @PerActivity
+    internal fun provideMainPresenter(
+            presenter: MainPresenter<MainMvpView>): MainMvpPresenter<MainMvpView> =
+            presenter
+
 
     @Provides
     internal fun provideDividerItemDecoration(activity: AppCompatActivity): DividerItemDecoration =
