@@ -23,6 +23,7 @@ import com.lethalskillzz.nomoreqs.presentation.base.BaseFragment
 import com.lethalskillzz.nomoreqs.presentation.custom.splash.cnst.Flags
 import com.lethalskillzz.nomoreqs.presentation.custom.splash.model.ConfigSplash
 import com.lethalskillzz.nomoreqs.presentation.custom.splash.utils.UIUtil
+import com.lethalskillzz.nomoreqs.presentation.main.MainActivity
 import com.nineoldandroids.animation.Animator
 import io.codetail.animation.SupportAnimator
 import io.codetail.animation.ViewAnimationUtils
@@ -226,8 +227,8 @@ class SplashActivity : BaseActivity(), SplashMvpView {
 
         val auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
-        if(currentUser!=null)
-            startActivity(AuthActivity.getStartIntent(this@SplashActivity))
+        if(currentUser==null)
+            startActivity(MainActivity.getStartIntent(this@SplashActivity))
         else
             startActivity(AuthActivity.getStartIntent(this@SplashActivity))
         finish()

@@ -8,4 +8,10 @@ import com.lethalskillzz.nomoreqs.presentation.base.MvpPresenter
  */
 
 @PerActivity
-interface MainMvpPresenter<V : MainMvpView> : MvpPresenter<V>
+interface MainMvpPresenter<V : MainMvpView> : MvpPresenter<V> {
+
+    fun handleDrawerOpen()
+
+    fun handleDrawerClose()
+
+}
