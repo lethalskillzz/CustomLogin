@@ -8,4 +8,8 @@ import com.lethalskillzz.nomoreqs.presentation.base.MvpPresenter
  */
 
 @PerActivity
-interface SignupMvpPresenter<V : SignupMvpView> : MvpPresenter<V>
+interface SignupMvpPresenter<V : SignupMvpView> : MvpPresenter<V> {
+
+    fun signupUser(email: String, password: String)
+
+}

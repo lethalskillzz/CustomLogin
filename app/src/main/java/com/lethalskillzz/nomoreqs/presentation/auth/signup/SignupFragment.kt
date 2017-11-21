@@ -23,6 +23,8 @@ import com.lethalskillzz.nomoreqs.presentation.custom.flip.BounceOvershootInterp
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import javax.inject.Inject
 
+
+
 /**
  * Created by ibrahimabdulkadir on 16/11/2017.
  */
@@ -101,7 +103,6 @@ class SignupFragment : BaseFragment(), SignupMvpView {
             component!!.inject(this)
             setUnBinder(ButterKnife.bind(this, view))
             mPresenter!!.onAttach(this)
-
         }
 
         return view
@@ -198,5 +199,7 @@ class SignupFragment : BaseFragment(), SignupMvpView {
 
         return false
     }
+
+
 
 }
