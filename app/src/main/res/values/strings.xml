@@ -22,4 +22,9 @@
     <string name="error_api_retry">Please retry!</string>
     <string name="error_default">Something wrong happened!</string>
 
+    <string name="user_avatar">User avatar</string>
+    <string name="navigation_drawer_icon">Navigation drawer icon</string>
+    <string name="arc_view_image">Arc view image</string>
+
+
 </resources>

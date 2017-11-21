@@ -4,18 +4,25 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.support.v4.view.GravityCompat
 import android.view.WindowManager
+import butterknife.ButterKnife
 import com.lethalskillzz.nomoreqs.R
 import com.lethalskillzz.nomoreqs.presentation.base.BaseActivity
 import com.lethalskillzz.nomoreqs.presentation.base.BaseFragment
+import com.lethalskillzz.nomoreqs.presentation.custom.navigation.NavigationItem
+import com.lethalskillzz.nomoreqs.presentation.custom.navigation.NavigationItemSelectedListener
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
+import com.lethalskillzz.nomoreqs.presentation.custom.navigation.NavigationId as Id
+
 
 /**
  * Created by ibrahimabdulkadir on 20/11/2017.
  */
 
 
-class MainActivity : BaseActivity(), MainMvpView {
+class MainActivity : BaseActivity(), MainMvpView, NavigationItemSelectedListener {
 
     @Inject lateinit var mPresenter: MainMvpPresenter<MainMvpView>
 
@@ -28,7 +35,7 @@ class MainActivity : BaseActivity(), MainMvpView {
 
         activityComponent!!.inject(this)
 
-        //setUnBinder(ButterKnife.bind(this))
+        setUnBinder(ButterKnife.bind(this))
 
         mPresenter!!.onAttach(this@MainActivity)
 
@@ -51,6 +58,25 @@ class MainActivity : BaseActivity(), MainMvpView {
         fun getStartIntent(context: Context): Intent {
             return Intent(context, MainActivity::class.java)
         }
+    }
+
+    override fun onBackPressed() {
+        when {
+            drawerLayout.isDrawerOpen(GravityCompat.START) -> drawerLayout.closeDrawer(GravityCompat.START)
+            else -> super.onBackPressed()
+        }
+    }
+
+    override fun onNavigationItemSelected(item: NavigationItem) {
+        when (item.id) {
+            Id.ABOUT -> {
+                //goTo<AboutFragment>()
+            }
+            Id.LOG_OUT -> {
+                //presenter.logOut()
+            }
+        }
+        drawerLayout.closeDrawer(GravityCompat.START)
     }
 
     override fun remove(fragment: BaseFragment) {

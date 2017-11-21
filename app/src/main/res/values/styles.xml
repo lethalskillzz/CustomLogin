@@ -23,6 +23,9 @@
     </style>
 
 
+    <style name="MaterialTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+
     <style name="Widget"/>
 
     <style name="Widget.TextInputLayout">
